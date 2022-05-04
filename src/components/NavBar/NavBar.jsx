@@ -5,11 +5,14 @@ const NavBar = ({ user, handleLogout }) => {
     <>
       {user ?
         <nav>
+          <h1>Welcome, {user.name}</h1>
           <ul>
-            <li>Welcome, {user.name}</li>
-            <li><Link to="/profiles">Profiles</Link></li>
-            <li><Link to="" onClick={handleLogout}>LOG OUT</Link></li>
-            <li><Link to="/changePassword">Change Password</Link></li>
+            <li><Link to="/climate">Featured</Link></li>
+            <li><Link to="/forum">Forum</Link></li>
+            <li><Link to="/createpost">Create Post</Link></li>
+            <li><Link to="/createprofile">Create Profile</Link></li>
+            <li><Link to="" onClick={handleLogout}>Log out</Link></li>
+            {/* <li><Link to="/changePassword">Change Password</Link></li> */}
           </ul>
         </nav>
       :
@@ -17,6 +20,8 @@ const NavBar = ({ user, handleLogout }) => {
           <ul>
             <li><Link to="/login">Log In</Link></li>
             <li><Link to="/signup">Sign Up</Link></li>
+            <li><Link to="/climate">Featured</Link></li>
+            <li><Link to="/forum">Forum</Link></li>
           </ul>
         </nav>
       }

@@ -4,9 +4,14 @@ import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
+import Climate from './pages/ClimateAbout/Climate'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
+import Forum from './pages/Forum/Forum'
+import CreatePost from './pages/CreatePost/CreatePost'
+import CreateProfile from './pages/CreateProfile/CreateProfile'
+
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -36,8 +41,24 @@ const App = () => {
           element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
         />
         <Route
+          path="/climate"
+          element={<Climate  />}
+        />
+        {/* <Route
           path="/profiles"
           element={user ? <Profiles /> : <Navigate to="/login" />}
+        /> */}
+        <Route
+          path="/forum"
+          element={<Forum />}
+        />
+        <Route
+          path="/createpost"
+          element={<CreatePost />}
+        />
+        <Route
+          path="/createprofile"
+          element={<CreateProfile />}
         />
         <Route
           path="/changePassword"
