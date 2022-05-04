@@ -11,6 +11,7 @@ import * as authService from './services/authService'
 import Forum from './pages/Forum/Forum'
 import CreatePost from './pages/CreatePost/CreatePost'
 import CreateProfile from './pages/CreateProfile/CreateProfile'
+import About from './pages/About/About'
 
 
 const App = () => {
@@ -51,6 +52,10 @@ const App = () => {
         <Route
           path="/forum"
           element={<Forum />}
+        />
+        <Route
+          path="/about"
+          element={<About />}
         />
         <Route
           path="/createpost"
