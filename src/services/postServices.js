@@ -1,6 +1,7 @@
 import * as tokenService from '../services/tokenService'
 
-const BASE_URL = '/api/categories/'
+const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/categories`
+
 
 export const createCategory= async (category) => {
   try {
@@ -55,6 +56,7 @@ export const getAllCategories = async () => {
   try {
     const res = await fetch(`${BASE_URL}`)
     const data = await res.json()
+    console.log("data: ", data);
     return data
   } catch (error) {
     throw error
