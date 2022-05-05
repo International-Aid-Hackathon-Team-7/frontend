@@ -3,10 +3,11 @@ import styles from './Forum.module.css'
 import * as postService from '../../services/postServices'
 import CategoryCarousel from './CategoryCarousel'
 import PostFeed from './PostFeed'
+import TopPosts from './TopPosts'
 
 export default function Forum () {
   const [categories, setCategories] = useState([]);
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('topPosts');
 
   const changeCategory = (evt) => {
     console.log(evt.target)
@@ -28,10 +29,10 @@ export default function Forum () {
      {categories.length &&
       <>
         <CategoryCarousel categories={categories} changeCategory={changeCategory}/>
-        {category !== '' ?
+        {category !== 'topPosts' ?
           <PostFeed category={category} />
           :
-          <p>No Posts In this Category</p>
+          <TopPosts />
         }
       </>
      }
