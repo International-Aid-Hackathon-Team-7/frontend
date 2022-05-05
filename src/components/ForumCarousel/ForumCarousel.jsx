@@ -14,15 +14,17 @@ const ForumCarousel = (props) => {
     const dateText = date.slice(5,7) + '/' + date.slice(8,10) + '/' + date.slice(0,4);
 
     return (
-      <article className='discuss-card'>
+      <article className='carousel-card discuss-card'>
         {
           post.media &&
           <img src={post.media} alt={post.title} style={{ width: "250px", height: "auto"}}/>
         }
-        <p className='discuss-creator'>{post.owner.name} &#8901; {dateText}</p>
-        <h3 className='discuss-heading'>{post.title}</h3>
-        <p className='discuss-content'>{post.content}</p>
-        <div className='discuss-feedback'>Likes: {likeCount} Comments: {commentCount}</div>
+        <div className='carousel-card-content'>
+          <p className='discuss-creator'>{post.owner.name} &#8901; {dateText}</p>
+          <h3 className='discuss-heading'>{post.title}</h3>
+          <p className='discuss-content'>{post.content}</p>
+          <div className='discuss-feedback'>Likes: {likeCount} Comments: {commentCount}</div>
+        </div>
       </article>
     )
   })
