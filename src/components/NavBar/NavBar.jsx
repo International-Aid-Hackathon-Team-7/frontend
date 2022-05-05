@@ -20,19 +20,17 @@ const NavBar = ({ user, handleLogout }) => {
               <Link className="nav-link" to="/">Home<span className="sr-only">(current)</span></Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/climate">Featured</Link>
+              <Link className="nav-link" to="/learn">Learn</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/forum">Forum</Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link className="nav-link" to="/about">About Us</Link>
-            </li>
+            </li> */}
             <li className="nav-item">
               <Link  className="nav-link" to="/createpost">Create Post</Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/createprofile">Create Profile</Link></li>
             <li className="nav-item">
               <Link className="nav-link" to="" onClick={handleLogout}>Log out</Link>
             </li>
@@ -51,9 +49,9 @@ const NavBar = ({ user, handleLogout }) => {
             <li className="nav-item"><Link className='nav-link' to="/">Home</Link></li>
             <li className="nav-item"><Link className='nav-link' to="/login">Log In</Link></li>
             <li className="nav-item"><Link className='nav-link' to="/signup">Sign Up</Link></li>
-            <li className="nav-item"><Link className='nav-link' to="/climate">Featured</Link></li>
+            <li className="nav-item"><Link className='nav-link' to="/learn">Learn</Link></li>
             <li className="nav-item"><Link className='nav-link' to="/forum">Forum</Link></li>
-            <li className="nav-item"><Link className='nav-link' to="/about">About Us</Link></li>
+            {/* <li className="nav-item"><Link className='nav-link' to="/about">About Us</Link></li> */}
           </ul>
           </div>
         </nav>
