@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import styles from './Forum.module.css'
 import * as postService from '../../services/postServices'
-import CategoryCarousel from './CategoryCarousel'
+// import CategoryCarousel from './CategoryCarousel'
 
 export default function Forum () {
   const [categories, setCategories] = useState();
@@ -16,7 +16,7 @@ export default function Forum () {
   return (
     <main className={styles.container}>
       <h1>This is where the forum will be</h1>
-      <CategoryCarousel categories={categories}/>
+      {/* <CategoryCarousel categories={categories}/> */}
     </main>
   )
 }

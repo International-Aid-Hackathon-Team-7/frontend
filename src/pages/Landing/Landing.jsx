@@ -1,68 +1,44 @@
+import { useEffect, useState } from 'react'
+import * as postService from '../../services/postServices'
+import ForumCarousel from '../../components/ForumCarousel/ForumCarousel';
+import LearnCarousel from '../../components/LearnCarousel/LearnCarousel';
+
 import styles from './Landing.module.css'
-import { Carousel } from 'react-bootstrap'
-import { useState } from 'react'
 
 export default function Landing ({ user }){
-  function ControlledCarousel() {
-    const [index, setIndex] = useState(1);
-  
-    const handleSelect = (selectedIndex, e) => {
-      setIndex(selectedIndex);
-    };
-  
-    return (
-      <Carousel activeIndex={index} onSelect={handleSelect} nextIcon={""} prevIcon={""} nextLabel={""}>
-        <Carousel.Item>
-          <img
-            className="d-block w-100 carousel-image"
-            src="https://media.giphy.com/media/fsnF17BpCvjmE9SMTh/giphy.gif?text=First slide&bg=373940"
-            alt="First slide"
-            width={100}
-            height={500}
-          />
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100 carousel-image"
-            src="https://media.giphy.com/media/5xtDarwd6J9RErfp5aU/giphy.gif?text=Second slide&bg=282c34"
-            alt="Second slide"
-            width={100}
-            height={500}
-          />
-  
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100  carouselimg"
-            src="https://media.giphy.com/media/Kf0cxquEm64pu0IuCw/giphy.gif?text=Third slide&bg=20232a"
-            alt="Third slide"
-            width={100}
-            height={500}
-          />
-  
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
-    );
-  }
+  const [forumPostsData , setForumPostsData] = useState({});
+  // const [learningPostsData , setLearningPostsData] = useState({});
+
+  useEffect(() => {
+    postService.getAllPosts().then((posts) => {
+      console.log({posts});
+      const forumPosts = posts.filter(post => post.category !== "Learning");
+      console.log({forumPosts});
+      setForumPostsData(forumPosts);
+    })
+  },[]);
+
+
   
   return (
     <main className={styles.container}>
       <h1>hello, {user ? user.name : 'friend'}</h1>
-      <ControlledCarousel/>
+      <section className='learning'>
+        <h2>Learn &#62;</h2>
+        <LearnCarousel />
+        {/* <video >
+          <source autostart autoPlay src={videoTwo} type='video/mp4'></source>
+          Your Browser Does Not Support This Video.
+        </video> */}
+        
+      </section>
+      <section className='forum-posts'>
+        <h2>Discuss &#62;</h2>
+        {
+          forumPostsData.length &&
+          <ForumCarousel forumPostsData={forumPostsData}  />
+        }
+      </section>
       
     </main>
   )
