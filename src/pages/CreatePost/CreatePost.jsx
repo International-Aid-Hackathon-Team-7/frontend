@@ -1,136 +1,127 @@
+import { useEffect, useRef, useState } from "react";
+import { getAllCategories, createPost } from "../../services/postServices";
 
-import { Row, Col, Form, Button, FloatingLabel } from "react-bootstrap"
-import axios from "axios"
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import "bootstrap/dist/css/bootstrap.min.css"
+export default function CreatePost(props) {
+  const formElement = useRef();
+  const [validForm, setValidForm] = useState(false);
+  const [formData, setFormData] = useState({
+    title: "",
+    content: "",
+    isAnonymous: false,
+    media: "",
+    category: "",
+  });
+  const [categories, setCategories] = useState([]);
 
-export default function CreatePost() {
-  const navigate = useNavigate()
-  // return( <h1> create event</h1>)
-  const [postForm, setpostForm] = useState({
-    anonymous: false
-  })
+  useEffect(() => {
+    getAllCategories().then((categories) => {
+      console.log("just pulled the cats", categories);
+      setCategories(categories);
+    });
+  }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  useEffect(() => {
+    formElement.current.checkValidity()
+      ? setValidForm(true)
+      : setValidForm(false);
+  }, [formData]);
 
-    // const token = localStorage.getItem("jwt")
-    // console.log("token", token)
-    // // make the auth headers
-    // const options = {
-    //   headers: {
-    //     Authorization: token,
-    //   },
-    // }
-    // axios
-    //   .post(
-    //     `${process.env.REACT_APP_SERVER_URL}/api-v1/events/`,
-    //     postForm,
-    //     options
-    //   )
-    //   .then((response) => {
-    //     setpostForm({})
-    //     const eventId = response.data[1]._id
-    //     navigate(`/events/${eventId}`)
-    //   })
-    //   .catch(console.log)
-  }
-  
+  const handleChange = (evt) => {
+    setFormData({ ...formData, [evt.target.name]: evt.target.value });
+  };
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    let categoryId = categories.filter(category => category.category === formData.category)
+    const postFormData = {
+      category: formData.category,
+      title: formData.title,
+      content: formData.content,
+      media: formData.media,
+      isAnonymous: formData.isAnonymous,
+    };
+    createPost(`/${categoryId[0]._id}`, postFormData);
+  };
+
+  const handleChangePhoto = (evt) => {
+    setFormData({ ...formData, photo: evt.target.files[0] });
+  };
+
+  const categoryOptions = categories.map((category) => {
+    return <option value={category.category}>{category.category}</option>;
+  });
+
   return (
     <>
-    <div style={{padding: '50px'}}>
-      <Form
-        className="BebasNeue createFormCard container-fluid mb-5"
+      <h1 className="post-title">Create a Post</h1>
+      <form
+        autoComplete="off"
+        ref={formElement}
         onSubmit={handleSubmit}
-        style={{ color: "black" }}
+        className="create-post-form"
       >
-        <h1 className="createCardTitle">Create Post</h1>
-        <Form.Group className="mb-3" controlId="formGridTitle">
-          <Form.Label>Title:</Form.Label>
-          <Form.Control
+        <div className="category-choice">
+          <select
+            onChange={(event) => handleChange(event)}
+            name="category"
+            id="selectCategory"
+          >
+            {categoryOptions}
+          </select>
+        </div>
+        <div className="form-group mb-3">
+          <label htmlFor="title-input" className="form-label">
+            Title<span>* </span>
+          </label>
+          <input
             type="text"
-            value={postForm.title}
-            onChange={(e) =>
-              setpostForm({ ...postForm, title: e.target.value })
-            }
-            required
-            placeholder=""
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formGridAddress2">
-          <Form.Label>Content:</Form.Label>
-          <Form.Control
-            as="textarea" rows={3}
-            value={postForm.body}
-            onChange={(e) =>
-              setpostForm({ ...postForm, body: e.target.value })
-            }
-            required
-            placeholder="Tell the world your story.."
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formGridAddress2">
-          <Form.Label>Media:</Form.Label>
-          <Form.Control
-           type="file"
-           multiple
-            value={postForm.content}
-            onChange={(e) =>
-              setpostForm({ ...postForm, media: e.target.value })
-            }
+            className="form-control"
+            id="title-input"
+            name="title"
+            value={formData.name}
+            onChange={handleChange}
             required
           />
-        </Form.Group>
+        </div>
 
-        <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridCity">
-            <Form.Label>category:</Form.Label>
-            <Form.Select
-              value={postForm.category}
-              onChange={(e) =>
-                setpostForm({ ...postForm, category: e.target.value })
-              }
-              required
-            >
-              <option>Please select a Category</option>
-              <option value="Deforestation">Deforestation</option>
-              <option value="Air Pollution">Air Pollution</option>
-              <option value="Water Pollution">Water Pollution</option>
-              <option value="Ground Pollution">Ground Pollution</option>
-              <option value="Extreme Weather">Extreme Weather</option>
-              <option value="Other">Other</option>
-            </Form.Select>
-          </Form.Group>
-
-          <Row className="mb-3 mt-3">
-            <Form.Group as={Col} controlId="formGridCity">
-              <Form.Check
-                type="switch"
-                value={postForm.anonymous}
-                onChange={(e) =>
-                  setpostForm({ ...postForm, anonymous: !postForm.anonymous })
-                }
-                id="custom-switch"
-                label="Post Anonymously"
-                required
-              />
-            </Form.Group>
-          </Row>
-        </Row>
-
-        <Button
-          style={{ color: "white" }}
-          size="lg"
-          type="submit"
-          className="mb-3"
-        >
-          next
-        </Button>
-      </Form>
-      </div>
+        <div className="form-group mb-4">
+          <label htmlFor="content-input" className="form-label">
+            Post Content<span>* </span>
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="content-input"
+            name="content"
+            value={formData.content}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group mb-4">
+          <label htmlFor="photo-upload" className="form-label">
+            Upload Photo
+          </label>
+          <input
+            type="file"
+            className="form-control"
+            id="media-upload"
+            name="media"
+            onChange={handleChangePhoto}
+          />
+        </div>
+        <div className="d-grid">
+          <button
+            type="submit"
+            className="btn btn-primary btn-fluid"
+            disabled={!validForm}
+          >
+            Add Post
+          </button>
+          <br />
+          <span>* </span> indicates a requried field
+        </div>
+      </form>
     </>
-  )
+  );
 }

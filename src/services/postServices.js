@@ -65,7 +65,7 @@ export const getAllCategories = async () => {
 
 export const getAllPosts = async () => {
   try {
-    const res = await fetch(`${BASE_URL}`)
+    const res = await fetch(`${BASE_URL}/posts`)
     const data = await res.json()
     console.log("data: ", data);
     return data
