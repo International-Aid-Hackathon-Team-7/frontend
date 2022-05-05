@@ -63,6 +63,17 @@ export const getAllCategories = async () => {
   }
 }
 
+export const getAllPosts = async () => {
+  try {
+    const res = await fetch(`${BASE_URL}/posts`)
+    const data = await res.json()
+    console.log("data: ", data);
+    return data
+  } catch (error) {
+    throw error
+  }
+}
+
 export const updateCategory = async (categoryId, category) => {
   try {
     const res = await fetch(`${BASE_URL}${categoryId}`, {
