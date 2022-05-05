@@ -6,12 +6,12 @@ export default function CategoryCarousel(props) {
     const responsive = {
         desktop: {
           breakpoint: { max: 3000, min: 1024 },
-          items: 3,
+          items: 6,
           slidesToSlide: 3 // optional, default to 1.
         },
         tablet: {
           breakpoint: { max: 1024, min: 464 },
-          items: 2,
+          items: 4,
           slidesToSlide: 2 // optional, default to 1.
         },
         mobile: {
@@ -22,7 +22,11 @@ export default function CategoryCarousel(props) {
       };
 
     const categoryDivs = props.categories.map((category) => (
-        <div>
+        <div 
+            key={category._id}
+            id={category._id}
+            onClick={props.changeCategory}
+        >
             {category.category}
         </div>
     ))
@@ -31,7 +35,7 @@ export default function CategoryCarousel(props) {
         <Carousel
             swipeable={true}
             draggable={false}
-            showDots={true}
+            showDots={false}
             responsive={responsive}
             infinite={true}
             autoPlay={false}
