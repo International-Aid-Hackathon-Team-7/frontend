@@ -7,7 +7,17 @@ export default function TopPosts(props) {
         lastTenPosts.push(props.posts[i])
     }
     const topPosts = lastTenPosts.map((post) => (
-        <div key={post._id} id={post._id} onClick={props.selectTopPost}>{post.title}</div>
+        <div 
+            key={post._id} 
+            id={post._id} 
+            onClick={props.selectTopPost}
+        >
+            <span>{post.owner.name}</span>
+            <h2>
+                {post.title}
+            </h2>
+            <p>Comments: {post.comments.length}</p>
+        </div>
     ))
     return(
         <>

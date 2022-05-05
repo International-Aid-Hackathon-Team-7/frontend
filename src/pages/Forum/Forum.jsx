@@ -45,39 +45,48 @@ export default function Forum () {
       .then(posts => setPosts(posts))
   }, [])
 
-  return (
-    <main className={styles.container}>
-      <h1>Forum</h1>
-     {categories.length &&
-      <>
-        <CategoryCarousel categories={categories} changeCategory={changeCategory}/>
-        {category !== 'topPosts' ?
-        <>
-          {post === '' ?
+  const loaded = () => {
+    return(
+      <main className={styles.container}>
+        <h1>Forum</h1>
+            <CategoryCarousel categories={categories} changeCategory={changeCategory}/>
+            {category !== 'topPosts' ?
             <>
-              <button onClick={resetCategory}>See Latest Posts</button> 
-              <PostFeed category={category} selectPost={selectPost}/>
-            </>
-            :
-            <ForumPost post={post} category={category}/>
-          }
-        </>
-        :
-        <>
-          {post === '' ?
-            <>
-              <TopPosts posts={posts} selectTopPost={selectTopPost}/>
+              {post === '' ?
+                <>
+                  <button onClick={resetCategory}>See Latest Posts</button> 
+                  <PostFeed category={category} selectPost={selectPost}/>
+                </>
+                :
+                <ForumPost post={post} category={category}/>
+              }
             </>
             :
             <>
-              <ForumPost post={post} category={category}/>
-            </>
-          }
-        </>
+              {post === '' ?
+                <>
+                  <TopPosts posts={posts} selectTopPost={selectTopPost}/>
+                </>
+                :
+                <>
+                  <ForumPost post={post} category={category}/>
+                </>
+              }
+          </>
         }
-      </>
-     }
+      </main>
+    )
+  }
+
+  const loading = () => {
+    return(
+      <main className={styles.container}>
+      <h1>Forum</h1>
+      <h2>Loading...</h2>
     </main>
-  )
+    )
+  }
+
+  return categories.length > 0 ? loaded() : loading();
 }
 
