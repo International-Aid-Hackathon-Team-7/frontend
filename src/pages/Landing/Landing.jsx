@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import * as postService from '../../services/postServices'
 import ForumCarousel from '../../components/ForumCarousel/ForumCarousel';
 import LearnCarousel from '../../components/LearnCarousel/LearnCarousel';
+import GetInvolvedCarousel from '../../components/GetInvolvedCarousel/GetInvolvedCarousel';
 
 import styles from './Landing.module.css'
 
@@ -33,6 +34,10 @@ export default function Landing ({ user }){
           forumPostsData.length &&
           <ForumCarousel forumPostsData={forumPostsData}  />
         }
+      </section>
+      <section className='get-involved'>
+        <h2>Get Involved &#62;</h2>
+        <GetInvolvedCarousel />  
       </section>
       
     </main>
