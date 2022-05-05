@@ -27,8 +27,7 @@ export default function Landing ({ user }){
       {/* <h1>hello, {user ? user.name : 'friend'}</h1> */}
       <section className='learning'>
         <h2>
-          <Link className="landing-page-link" to="/learn">Learn</Link>
-          Learn &#62;
+          <Link className="landing-page-link" to="/learn">Learn &#62;</Link>
         </h2>
         <LearnCarousel />        
       </section>
@@ -43,8 +42,7 @@ export default function Landing ({ user }){
       </section>
       <section className='get-involved'>
         <h2>
-          <Link className="landing-page-link" to="/about">About Us</Link>
-          Get Involved &#62;
+          <Link className="landing-page-link" to="/about">Get Involved &#62;</Link>
         </h2>
         <GetInvolvedCarousel />  
       </section>
