@@ -34,29 +34,37 @@ const LearnCarousel = () => {
       responsive={responsive}
       removeArrowOnDeviceType={["tablet", "mobile"]}
     >
-      <article className='learn-card'>
-        <video src={videoOne} preload='auto' autoPlay type='video/mp4' width='85%' />
-        <p className='learn-creator'>Ally Dean &#8901; 5/3/2022</p>
-        <h3 className='learn-heading'>5 Sustainability Tips and Tricks</h3>
-        <div className='learn-feedback'>1.4k 300</div>
+      <article className='carousel-card learn-card'>
+        <video src={videoOne} preload='auto' autoPlay type='video/mp4' width='100%' />
+        <div className='carousel-card-content'>
+          <p className='learn-creator'>Ally Dean &#8901; 5/3/2022</p>
+          <h3 className='learn-heading'>5 Sustainability Tips and Tricks</h3>
+          <div className='learn-feedback'>1.4k 300</div>
+        </div>
       </article>
-      <article className='learn-card'>
-        <video src={videoTwo} preload='auto' autoPlay type='video/mp4' width='85%' />
-        <p className='learn-creator'>Dean Wright &#8901; 3/15/2022</p>
-        <h3 className='learn-heading'>Eco Friendly Commute</h3>
-        <div className='learn-feedback'>2.4k 100</div>
+      <article className='carousel-card learn-card'>
+        <video src={videoTwo} preload='auto' autoPlay type='video/mp4' width='100%' />
+        <div className='carousel-card-content'>
+          <p className='learn-creator'>Dean Wright &#8901; 3/15/2022</p>
+          <h3 className='learn-heading'>Eco Friendly Commute</h3>
+          <div className='learn-feedback'>2.4k 100</div>
+        </div>
       </article>
-      <article className='learn-card'>
-        <video src={videoThree} preload='auto' autoPlay type='video/mp4' width='85%' />
-        <p className='learn-creator'>Jerome Delaney &#8901; 4/23/2022</p>
-        <h3 className='learn-heading'>Solar Basics</h3>
-        <div className='learn-feedback'>1.8k 350</div>
+      <article className='carousel-card learn-card'>
+        <video src={videoThree} preload='auto' autoPlay type='video/mp4' width='100%' />
+        <div className='carousel-card-content'>
+          <p className='learn-creator'>Jerome Delaney &#8901; 4/23/2022</p>
+          <h3 className='learn-heading'>Solar Basics</h3>
+          <div className='learn-feedback'>1.8k 350</div>
+        </div>
       </article>
-      <article className='learn-card'>
-        <video src={videoFour} preload='auto' autoPlay type='video/mp4' width='85%' />
-        <p className='learn-creator'>Ally Dean &#8901; 5/3/2022</p>
-        <h3 className='learn-heading'>5 Sustainability Tips and Tricks</h3>
-        <div className='learn-feedback'>1.4k 300</div>
+      <article className='carousel-card learn-card'>
+        <video src={videoFour} preload='auto' autoPlay type='video/mp4' width='100%' />
+        <div className='carousel-card-content'>
+          <p className='learn-creator'>Ally Dean &#8901; 5/3/2022</p>
+          <h3 className='learn-heading'>5 Sustainability Tips and Tricks</h3>
+          <div className='learn-feedback'>1.4k 300</div>
+        </div>
       </article>
     </Carousel>
   )
