@@ -13,7 +13,7 @@ export default function CreatePost(props) {
     content: "",
     isAnonymous: false,
     media: "",
-    category: "",
+    category: "Carbon Footprint",
   });
   const [categories, setCategories] = useState([]);
 
