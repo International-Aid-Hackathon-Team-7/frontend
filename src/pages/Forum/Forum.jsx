@@ -26,12 +26,12 @@ export default function Forum () {
   }
   
   const selectPost = (evt) => {
-    const index = category.posts.map(post => post._id).indexOf(evt.target.id)
+    const index = category.posts.map(post => post._id).indexOf(evt.currentTarget.id)
     setPost(category.posts[index])
   }
   
   const selectTopPost = (evt) => {
-    const index = posts.map(post => post._id).indexOf(evt.target.id)
+    const index = posts.map(post => post._id).indexOf(evt.currentTarget.id)
     setPost(posts[index])
   }
   
