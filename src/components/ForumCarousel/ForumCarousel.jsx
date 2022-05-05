@@ -17,7 +17,7 @@ const ForumCarousel = (props) => {
       <article className='discuss-card'>
         {
           post.media &&
-          <img src={post.media} alt={post.title} style={{ width: "250px"}}/>
+          <img src={post.media} alt={post.title} style={{ width: "250px", height: "auto"}}/>
         }
         <p className='discuss-creator'>{post.owner.name} &#8901; {dateText}</p>
         <h3 className='discuss-heading'>{post.title}</h3>
