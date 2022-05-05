@@ -1,10 +1,16 @@
 import { Link } from 'react-router-dom'
-
+import styles from './NavBar.module.css'
 const NavBar = ({ user, handleLogout }) => {
   return (
     <>
       {user ?
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <Link className={"navbar-brand"} to="/">Bridge</Link>
+        <img
+            src="/notification.png"
+            alt="logo"
+            style={{ width: "36px", height: "36px" }}
+            className={styles.navBar}/>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -33,10 +39,10 @@ const NavBar = ({ user, handleLogout }) => {
             {/* <li><Link to="/changePassword">Change Password</Link></li> */}
             </ul>
         </div>
-        <Link className={"navbar-brand"} to="/">Bridge</Link>
       </nav>
       :
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <Link className={"navbar-brand"} to="/">Bridge</Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -50,7 +56,6 @@ const NavBar = ({ user, handleLogout }) => {
             <li className="nav-item"><Link className='nav-link' to="/about">About Us</Link></li>
           </ul>
           </div>
-          <Link className={"navbar-brand"} to="/">Bridge</Link>
         </nav>
       }
     </>
