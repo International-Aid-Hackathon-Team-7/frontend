@@ -26,21 +26,23 @@ const ForumCarousel = (props) => {
   return (
     <Carousel
       partialVisible={true}
-      swipeable={false}
-      draggable={true}
-      showDots={false}
-      responsive={responsive}
-      // infinite={true}
+      autoPlay={true}
       // autoPlay={this.props.deviceType !== "mobile" ? true : false}
-      // autoPlaySpeed={1000}
+      responsive={responsive}
+      showDots={false}
+      removeArrowOnDeviceType={["tablet", "mobile"]}
+      // shouldResetAutoplay={true}
+      // draggable={false}
       keyBoardControl={true}
+      // infinite={true}
+      // autoPlaySpeed={1000}
       customTransition="all .5"
       transitionDuration={500}
       containerClass="carousel-container"
-      removeArrowOnDeviceType={["tablet", "mobile"]}
-      // deviceType={this.props.deviceType}
-      dotListClass="custom-dot-list-style"
       itemClass="carousel-item-padding-40-px"
+      sliderClass='multi-carousel-track'
+      containerClass='multi-carousel-list'
+
     >
       <div>Item 1</div>
       <div>Item 2</div>

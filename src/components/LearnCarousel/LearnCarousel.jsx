@@ -28,9 +28,9 @@ const LearnCarousel = () => {
 
   return (
     <Carousel partialVisible={true} responsive={responsive}>
-      <video src={videoOne} preload='auto' autoPlay type='video/mp4' width='80%' />
-      <video src={videoTwo} preload='auto' autoPlay type='video/mp4' width='80%' />
-      <video src={videoThree} preload='auto' autoPlay type='video/mp4' width='80%' />
+      <video src={videoOne} preload='auto' autoPlay type='video/mp4' width='85%' />
+      <video src={videoTwo} preload='auto' autoPlay type='video/mp4' width='85%' />
+      <video src={videoThree} preload='auto' autoPlay type='video/mp4' width='85%' />
     </Carousel>
   )
 }
