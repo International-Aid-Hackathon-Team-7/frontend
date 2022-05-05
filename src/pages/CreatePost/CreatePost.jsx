@@ -43,8 +43,10 @@ export default function CreatePost(props) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    let owner = props.user.id
     let categoryId = categories.filter(category => category.category === formData.category)
     const postFormData = {
+      owner: owner,
       category: formData.category,
       title: formData.title,
       content: formData.content,
@@ -108,7 +110,7 @@ export default function CreatePost(props) {
           <label htmlFor="content-input" className="form-label">
             Post Content<span>* </span>
           </label>
-          <input
+          <textarea
             type="text"
             className="form-control"
             id="content-input"

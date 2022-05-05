@@ -59,7 +59,7 @@ const App = () => {
         />
         <Route
           path="/createpost"
-          element={<CreatePost />}
+          element={<CreatePost user={user}/>}
         />
         <Route
           path="/createprofile"
