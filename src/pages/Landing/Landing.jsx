@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import * as postService from '../../services/postServices'
 import ForumCarousel from '../../components/ForumCarousel/ForumCarousel';
 import LearnCarousel from '../../components/LearnCarousel/LearnCarousel';
+import GetInvolvedCarousel from '../../components/GetInvolvedCarousel/GetInvolvedCarousel';
 
 import styles from './Landing.module.css'
 
@@ -11,9 +12,9 @@ export default function Landing ({ user }){
 
   useEffect(() => {
     postService.getAllPosts().then((posts) => {
-      console.log({posts});
+      // console.log({posts});
       const forumPosts = posts.filter(post => post.category !== "Learning");
-      console.log({forumPosts});
+      console.log(forumPosts);
       setForumPostsData(forumPosts);
     })
   },[]);
@@ -22,15 +23,10 @@ export default function Landing ({ user }){
   
   return (
     <main className={styles.container}>
-      <h1>hello, {user ? user.name : 'friend'}</h1>
+      {/* <h1>hello, {user ? user.name : 'friend'}</h1> */}
       <section className='learning'>
         <h2>Learn &#62;</h2>
-        <LearnCarousel />
-        {/* <video >
-          <source autostart autoPlay src={videoTwo} type='video/mp4'></source>
-          Your Browser Does Not Support This Video.
-        </video> */}
-        
+        <LearnCarousel />        
       </section>
       <section className='forum-posts'>
         <h2>Discuss &#62;</h2>
@@ -38,6 +34,10 @@ export default function Landing ({ user }){
           forumPostsData.length &&
           <ForumCarousel forumPostsData={forumPostsData}  />
         }
+      </section>
+      <section className='get-involved'>
+        <h2>Get Involved &#62;</h2>
+        <GetInvolvedCarousel />  
       </section>
       
     </main>
