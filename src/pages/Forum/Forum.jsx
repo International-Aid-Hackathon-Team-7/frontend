@@ -16,12 +16,12 @@ export default function Forum () {
     setCategory(cat)
   }
 
+  
   useEffect(() => {
     postService.getAllCategories()
     .then(categories => setCategories(categories));
   }, []);
   
-
   return (
     <main className={styles.container}>
       <h1>Forum</h1>
