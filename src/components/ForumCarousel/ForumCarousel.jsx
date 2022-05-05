@@ -41,7 +41,7 @@ const ForumCarousel = (props) => {
       containerClass="carousel-container"
       itemClass="carousel-item-padding-40-px"
       sliderClass='multi-carousel-track'
-      containerClass='multi-carousel-list'
+      // containerClass='multi-carousel-list'
 
     >
       <div>Item 1</div>
