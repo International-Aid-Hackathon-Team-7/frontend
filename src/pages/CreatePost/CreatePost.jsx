@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { getAllCategories, createPost } from "../../services/postServices";
+import {useNavigate} from 'react-router-dom'
 
 import { uploadFile } from "react-s3";
 
@@ -16,7 +17,7 @@ export default function CreatePost(props) {
     category: "Carbon Footprint",
   });
   const [categories, setCategories] = useState([]);
-
+  const navigate = useNavigate()
   const config = {
     bucketName: 'bridge-app-bucket',
     region: 'us-east-1',
@@ -54,6 +55,7 @@ export default function CreatePost(props) {
       isAnonymous: formData.isAnonymous,
     };
     createPost(`/${categoryId[0]._id}`, postFormData);
+    navigate('/forum')
   };
 
   const handleChangePhoto = (evt) => {
