@@ -11,7 +11,13 @@ export default function PostFeed(props) {
                         id={post._id}
                         onClick={props.selectPost}
                         >
+                            <span>
+                            {post.owner.name}
+                            </span>
+                            <h2>
                             {post.title}
+
+                            </h2>
                     </div>
                 ))}
             </>
