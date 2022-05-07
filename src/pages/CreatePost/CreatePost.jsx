@@ -1,10 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import { getAllCategories, createPost } from "../../services/postServices";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 import { uploadFile } from "react-s3";
 
 window.Buffer = window.Buffer || require("buffer").Buffer;
+
+const S3_BUCKET = "bridge-app-bucket";
+const REGION = "us-east-1";
+const ACCESS_KEY = process.env.REACT_APP_ACCESSKEYID;
+const SECRET_ACCESS_KEY = process.env.REACT_APP_SECRETACCESSKEY;
+
+const config = {
+  bucketName: S3_BUCKET,
+  region: REGION,
+  accessKeyId: ACCESS_KEY,
+  secretAccessKey: SECRET_ACCESS_KEY,
+};
 
 export default function CreatePost(props) {
   const formElement = useRef();
@@ -17,13 +29,7 @@ export default function CreatePost(props) {
     category: "Carbon Footprint",
   });
   const [categories, setCategories] = useState([]);
-  const navigate = useNavigate()
-  const config = {
-    bucketName: 'bridge-app-bucket',
-    region: 'us-east-1',
-    accessKeyId: process.env.REACT_APP_ACCESSKEYID,
-    secretAccessKey: process.env.REACT_APP_SECRETACCESSKEY
-}
+  const navigate = useNavigate();
 
   useEffect(() => {
     getAllCategories().then((categories) => {
@@ -44,8 +50,10 @@ export default function CreatePost(props) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    let owner = props.user.id
-    let categoryId = categories.filter(category => category.category === formData.category)
+    let owner = props.user.id;
+    let categoryId = categories.filter(
+      (category) => category.category === formData.category
+    );
     const postFormData = {
       owner: owner,
       category: formData.category,
@@ -55,20 +63,19 @@ export default function CreatePost(props) {
       isAnonymous: formData.isAnonymous,
     };
     createPost(`/${categoryId[0]._id}`, postFormData);
-    navigate('/forum')
+    navigate("/forum");
   };
 
   const handleChangePhoto = (evt) => {
-    console.log('in the upload photo function: ',evt.target.files[0])
+    console.log("in the upload photo function: ", evt.target.files[0]);
     uploadFile(evt.target.files[0], config)
-    .then((data)=> {
-      console.log(data)
-      setFormData({ ...formData, media: data.location })
-    })
-    .catch( (err)=>{
-      console.log(err)
-    })
-    
+      .then((data) => {
+        console.log(data);
+        setFormData({ ...formData, media: data.location });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const categoryOptions = categories.map((category) => {
