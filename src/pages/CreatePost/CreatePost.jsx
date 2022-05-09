@@ -33,10 +33,10 @@ export default function CreatePost(props) {
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
   const [fileName, setFileName] = useState("No File Chosen");
+  const [conetentLength, setContentLength] = useState(300);
 
   useEffect(() => {
     getAllCategories().then((categories) => {
-      console.log("just pulled the cats", categories);
       setCategories(categories);
     });
   }, []);
@@ -48,12 +48,24 @@ export default function CreatePost(props) {
   }, [formData]);
 
   const handleChange = (evt) => {
-    setFormData({ ...formData, [evt.target.name]: evt.target.value });
+    if (evt.target.name === "content") {
+      if (evt.target.value === "") {
+        setContentLength(300);
+      } else {
+        let contentArray = evt.target.value.split(" ");
+        setContentLength(300 - contentArray.length);
+      }
+    }
+    if (evt.target.name === "isAnonymous") {
+      setFormData({ ...formData, [evt.target.name]: !formData.isAnonymous });
+    } else {
+      setFormData({ ...formData, [evt.target.name]: evt.target.value });
+    }
   };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    let owner = props.user.id;
+    let owner = props.user._id;
     let categoryId = categories.filter(
       (category) => category.category === formData.category
     );
@@ -63,14 +75,14 @@ export default function CreatePost(props) {
       title: formData.title,
       content: formData.content,
       media: formData.media,
-      isAnonymous: formData.isAnonymous,
+      // isAnonymous: formData.isAnonymous
     };
+    console.log("Post Data: ", postFormData)
     createPost(`/${categoryId[0]._id}`, postFormData);
     navigate("/forum");
   };
 
   const handleChangePhoto = (evt) => {
-    console.log("in the upload photo function: ", evt.target.files[0]);
     setFileName(evt.target.files[0].name);
     uploadFile(evt.target.files[0], config)
       .then((data) => {
@@ -82,16 +94,20 @@ export default function CreatePost(props) {
       });
   };
 
-  const categoryOptions = categories.map((category) => {
-    return <option value={category.category}>{category.category}</option>;
+  const categoryOptions = categories.map((category, index) => {
+    return (
+      <option key={index} value={category.category}>
+        {category.category}
+      </option>
+    );
   });
 
   return (
     <>
-      <div className={styles.formContainer}>
+      <div key="i1a" className={styles.formContainer}>
         <h1 className={styles.pageTitle}>Create Post</h1>
         <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
-          <div className={styles.titleInputContainer}>
+          <div key="i1" className={styles.titleInputContainer}>
             <label htmlFor="title-input" className={styles.createPostTitle}>
               <span>Title:</span>
             </label>
@@ -107,7 +123,7 @@ export default function CreatePost(props) {
             />
           </div>
 
-          <div className={styles.contentInputContainer}>
+          <div key="i2" className={styles.contentInputContainer}>
             <label htmlFor="content-input">
               <span>Content:</span>
             </label>
@@ -121,12 +137,14 @@ export default function CreatePost(props) {
               placeholder="Enter content"
               required
             />
-            {/* <div classname={styles.wordsRemaining}>300 words remaining</div> */}
+          </div>
+          <div key="i2b" className={styles.wordsRemaining}>
+            {conetentLength} words remaining
           </div>
 
-          <div className={styles.mediaUploadContainer}>
+          <div key="i3" className={styles.mediaUploadContainer}>
             Media:
-            <div className={styles.uploadLabel}>
+            <div key="i3b" className={styles.uploadLabel}>
               <input
                 type="file"
                 className={styles.uploadButton}
@@ -135,14 +153,17 @@ export default function CreatePost(props) {
                 accept="image/*"
                 onChange={handleChangePhoto}
               />
-              <label for="media-upload" className={styles.fileUploadButton}>
+              <label htmlFor="media-upload" className={styles.fileUploadButton}>
                 Choose File
               </label>
-              <div className={styles.fileName}> {fileName}</div>
+              <div key="i3c" className={styles.fileName}>
+                {" "}
+                {fileName}
+              </div>
             </div>
           </div>
 
-          <div className={styles.categorySelectionContainer}>
+          <div key="i4" className={styles.categorySelectionContainer}>
             <span>Category:</span>
             <select
               onChange={(event) => handleChange(event)}
@@ -154,21 +175,26 @@ export default function CreatePost(props) {
             </select>
           </div>
 
-          <div className={styles.postAnonymously}>
-            <label for="anonymous" className={styles.switch}>
-              <input type="checkbox" id="anonymous"/>
+          <div key="i5" className={styles.postAnonymously}>
+            <label htmlFor="anonymous" className={styles.switch}>
+              <input
+                type="checkbox"
+                id="anonymous"
+                name="isAnonymous"
+                onChange={(event) => handleChange(event)}
+              />
               <span className={styles.slider}></span>
+              <span className={styles.anonymousText}>Post Anonymously</span>
             </label>
-              Post Anonymously
           </div>
 
-            <button
-              type="submit"
-              className={styles.submitBtn}
-              disabled={!validForm}
-            >
-              Create Post
-            </button>
+          <button
+            type="submit"
+            className={styles.submitBtn}
+            disabled={!validForm}
+          >
+            Create Post
+          </button>
         </form>
       </div>
     </>
