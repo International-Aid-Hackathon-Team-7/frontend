@@ -57,7 +57,7 @@ export default function CreatePost(props) {
       }
     }
     if (evt.target.name === "isAnonymous") {
-      setFormData({ ...formData, isAnonymous: !formData.isAnonymous });
+      setFormData({ ...formData, [evt.target.name]: !formData.isAnonymous });
     } else {
       setFormData({ ...formData, [evt.target.name]: evt.target.value });
     }
@@ -75,8 +75,9 @@ export default function CreatePost(props) {
       title: formData.title,
       content: formData.content,
       media: formData.media,
-      isAnonymous: formData.isAnonymous,
+      // isAnonymous: formData.isAnonymous
     };
+    console.log("Post Data: ", postFormData)
     createPost(`/${categoryId[0]._id}`, postFormData);
     navigate("/forum");
   };
