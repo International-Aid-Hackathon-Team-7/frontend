@@ -36,7 +36,6 @@ export const getCategoryId = async (categoryId) => {
 
 export const createPost= async (categoryId, post) => {
   try {
-    console.log(categoryId)
     const res = await fetch(`${BASE_URL}${categoryId}/posts/`, {
       method: 'POST',
       headers: {
@@ -56,7 +55,6 @@ export const getAllCategories = async () => {
   try {
     const res = await fetch(`${BASE_URL}`)
     const data = await res.json()
-    console.log("data: ", data);
     return data
   } catch (error) {
     throw error
@@ -67,7 +65,6 @@ export const getAllPosts = async () => {
   try {
     const res = await fetch(`${BASE_URL}/posts`)
     const data = await res.json()
-    console.log("data: ", data);
     return data
   } catch (error) {
     throw error
