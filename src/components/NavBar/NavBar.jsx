@@ -5,12 +5,16 @@ const NavBar = ({ user, handleLogout }) => {
     <>
       {user ?
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <Link className={"navbar-brand"} to="/">Bridge</Link>
-        <img
-            src="/notification.png"
-            alt="logo"
-            style={{ width: "36px", height: "36px" }}
-            className={styles.navBar}/>
+        <div style={{display: "flex"}}>
+          <Link className={"navbar-brand"} to="/">Bridge</Link>
+          <Link  className="nav-link" to="#">
+            <img
+              src="/notification.png"
+              alt="notifications"
+              className={styles.navBar}
+            />
+          </Link>
+        </div>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
