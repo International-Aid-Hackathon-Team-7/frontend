@@ -75,9 +75,9 @@ export default function CreatePost(props) {
       title: formData.title,
       content: formData.content,
       media: formData.media,
-      // isAnonymous: formData.isAnonymous
+      isAnonymous: formData.isAnonymous
     };
-    console.log("Post Data: ", postFormData);
+
     createPost(`/${categoryId[0]._id}`, postFormData);
     navigate("/forum");
   };
@@ -86,7 +86,6 @@ export default function CreatePost(props) {
     setFileName(evt.target.files[0].name);
     uploadFile(evt.target.files[0], config)
       .then((data) => {
-        console.log(data);
         setFormData({ ...formData, media: data.location });
       })
       .catch((err) => {
