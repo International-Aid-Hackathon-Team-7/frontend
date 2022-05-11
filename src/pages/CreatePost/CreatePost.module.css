@@ -1,9 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 100%;
+}
+
 .pageTitle {
-  position: absolute;
-  width: 109px;
+  position: relative;
   height: 26px;
-  left: 33.16px;
-  top: 135.78px;
+  left: 4%;
+  top: 78.78px;
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
@@ -12,110 +18,82 @@
 }
 
 .createPostTitle {
-  position: absolute;
-  width: 36px;
+  position: relative;
   height: 22px;
-  left: 0px;
-  top: 1px;
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
   display: flex;
-  align-items: center;
   color: #000000;
 }
 
 .titleInputContainer {
-  position: absolute;
+  position: relative;
   width: 92%;
   height: 71px;
-  left: 35px;
-  top: 191px;
+  margin: auto;
+  top: 95px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.05));
 }
 
 .titleInputContainer span {
-  position: absolute;
-  width: 36px;
   height: 22px;
-  left: 0px;
-  top: 1px;
-  font-family: "Open Sans";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
   line-height: 22px;
-  display: flex;
-  align-items: center;
-
   color: #000000;
 }
 
 .textInput {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   padding: 8px 12px;
-  position: absolute;
+  position: relative;
   width: 92%;
   height: 40px;
-  left: 0px;
-  top: 31px;
   background: #ffffff;
   border-radius: 4px;
+  border: #c4c4c4 1px solid;
 }
 
 .contentInputContainer {
-  position: absolute;
+  position: relative;
+  display: flex;
+  flex-direction: column;
   width: 92%;
   height: 122px;
-  left: 35px;
-  top: 288px;
+  margin: auto;
+  top: 124px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.05));
 }
 
 .contentInputContainer span {
-  position: absolute;
+  position: relative;
   width: 64px;
   height: 22px;
-  left: 0px;
-  top: 1px;
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
-  display: flex;
-  align-items: center;
-  color: #000000;
 }
 
 .contentInput {
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   padding: 8px 12px;
-  position: absolute;
+  position: relative;
   width: 92%;
   height: 91px;
-  left: 0px;
-  top: 31px;
   background: #ffffff;
   border-radius: 4px;
+  border: #c4c4c4 1px solid;
 }
 
 .wordsRemaining {
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 19px;
+  left: -10px;
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  top: 410px;
+  margin: auto;
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
@@ -125,11 +103,11 @@
 }
 
 .mediaUploadContainer {
-  position: absolute;
+  position: relative;
   width: 92%;
   height: 71px;
-  left: 42px;
-  top: 450px;
+  margin: auto;
+  top: 163px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.05));
 }
 
@@ -142,11 +120,12 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 40px;
+  right: 70px;
   left: 0px;
-  top: 31px;
+  top: 11px;
 }
 
 .fileUploadButton {
@@ -160,54 +139,51 @@
       rgba(255, 255, 255, 0.7)
     ),
     #c2c9d1;
-  border-radius: 4px;
+  border-radius: 4px 0px 0px 4px;
   padding-top: 8px;
   padding-left: 10px;
   cursor: pointer;
   overflow: hidden;
+  border-top: #c4c4c4 1px solid;
+  border-left: #c4c4c4 1px solid;
+  border-bottom: #c4c4c4 1px solid;
+  width: 35%;
 }
 
 input[type="file"] {
   display: none;
 }
 
-.fileUploadButton {
-  width: 35%;
-  background: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.7),
-      rgba(255, 255, 255, 0.7)
-    ),
-    #c2c9d1;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
 .fileName {
-  width: 55%;
+  width: 56%;
   height: 100%;
   margin-right: 0;
+  right: 70px;
+  left: 0px;
   background: #ffffff;
   border-radius: 0px 4px 4px 0px;
   padding-top: 8px;
   padding-left: 10px;
+  border-top: #c4c4c4 1px solid;
+  border-right: #c4c4c4 1px solid;
+  border-bottom: #c4c4c4 1px solid;
 }
 
 .categorySelectionContainer {
-  position: absolute;
+  position: relative;
   width: 92%;
   height: 71px;
-  left: 35px;
-  top: 540px;
+  margin: auto;
+  top: 190px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.05));
 }
 
 .categorySelectionContainer span {
-  position: absolute;
+  position: relative;
   width: 71px;
   height: 22px;
   left: 0px;
-  top: 1px;
+  top: 0px;
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
@@ -216,6 +192,7 @@ input[type="file"] {
   display: flex;
   align-items: center;
   color: #000000;
+  
 }
 
 .categorySelection {
@@ -224,20 +201,23 @@ input[type="file"] {
   flex-direction: column;
   align-items: flex-start;
   padding: 8px 12px;
-  position: absolute;
+  position: relative;
   width: 92%;
   height: 40px;
+  top: 11px;
+  right: 70px;
   left: 0px;
-  top: 31px;
   background: #ffffff;
   border-radius: 4px;
+  border: #c4c4c4 1px solid;
 }
 
 .postAnonymously {
-  position: absolute;
-  width: 250px;
+  position: relative;
+  width: 100%;
   height: 22px;
-  top: 625px;
+  top: 210px;
+  left: 4%;
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
@@ -247,10 +227,10 @@ input[type="file"] {
 }
 
 .toggle {
-  position: absolute;
+  position: relative;
   width: 36px;
   height: 18px;
-  left: 35px;
+  /* left: 35px; */
 }
 
 /* slider */
@@ -259,7 +239,7 @@ input[type="file"] {
   display: inline-block;
   width: 36px;
   height: 18px;
-  left: 35px;
+  /* left: 35px; */
 }
 
 /* Hide default HTML checkbox */
@@ -333,18 +313,29 @@ input:checked + .slider:before {
   color: #000000;
 }
 
+.buttonContainer {
+  float: right;
+  position: absolute;
+  display: inline-flex;
+  text-align: right;
+  width: 92%;
+  top: 674px;
+}
+
 .submitBtn {
+  float: right;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 8px 16px;
-  position: absolute;
+  position: relative;
   width: 160px;
   height: 40px;
-  right: 7%;
-  top: 687px;
   background: #2a3a5a;
   border-radius: 4px;
   color: white;
+  right: 12%;
+  top: 230px;
+  cursor: pointer;
 }
