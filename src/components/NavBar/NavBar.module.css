@@ -9,6 +9,9 @@ line-height: 43px; */
 }
 
 img {
-  width: 18px;
-  height: 18px;
+position: absolute;
+width: 39px;
+height: 39px;
+right: 90px;
+top: 10px;
 }

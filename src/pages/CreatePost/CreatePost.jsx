@@ -77,6 +77,7 @@ export default function CreatePost(props) {
       media: formData.media,
       isAnonymous: formData.isAnonymous
     };
+
     createPost(`/${categoryId[0]._id}`, postFormData);
     navigate("/forum");
   };
@@ -101,7 +102,7 @@ export default function CreatePost(props) {
   });
 
   return (
-    <>
+    <main className={styles.container}>
       <div key="i1a" className={styles.formContainer}>
         <h1 className={styles.pageTitle}>Create Post</h1>
         <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
@@ -135,9 +136,9 @@ export default function CreatePost(props) {
               placeholder="Enter content"
               required
             />
-          </div>
-          <div key="i2b" className={styles.wordsRemaining}>
-            {conetentLength} words remaining
+            <div key="i2b" className={styles.wordsRemaining}>
+              {conetentLength} words remaining
+            </div>
           </div>
 
           <div key="i3" className={styles.mediaUploadContainer}>
@@ -172,7 +173,6 @@ export default function CreatePost(props) {
               {categoryOptions}
             </select>
           </div>
-
           <div key="i5" className={styles.postAnonymously}>
             <label htmlFor="anonymous" className={styles.switch}>
               <input
@@ -185,16 +185,15 @@ export default function CreatePost(props) {
               <span className={styles.anonymousText}>Post Anonymously</span>
             </label>
           </div>
-
-          <button
-            type="submit"
-            className={styles.submitBtn}
-            disabled={!validForm}
-          >
-            Create Post
-          </button>
+              <button
+                type="submit"
+                className={styles.submitBtn}
+                disabled={!validForm}
+              >
+                Create Post
+              </button>
         </form>
       </div>
-    </>
+    </main>
   );
 }
