@@ -1,19 +1,14 @@
 a {
   font-family: 'Atkinson Hyperlegible', sans-serif;
-font-style: normal;
-font-weight: 700;
-/* font-size: 35px;
+  font-style: normal;
+  font-weight: 700;
+  /* font-size: 35px;
 line-height: 43px; */
-letter-spacing: 0.05em;
-color: #2A3A5A;
+  letter-spacing: 0.05em;
+  color: #2A3A5A;
 }
 
 img {
-  position: relative;
-width: 39px;
-height: 39px;
-left: 70px;
-top: 0px;
-
+  width: 18px;
+  height: 18px;
 }
-
