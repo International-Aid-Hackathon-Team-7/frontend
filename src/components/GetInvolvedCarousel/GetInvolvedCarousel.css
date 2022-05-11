@@ -1,27 +1,26 @@
 .getInvolved {
   height: 258px;
-  width: 329px;
+  width: 90%;
   background: #e5e5e5;
-  margin: 0 0 20px 20px;
   background: #fff;
+  margin: 0 0 10px 20px;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.2);
-
-  left: calc(50% - 306px / 2 - 6.5px);
   top: 170px;
-
-  /* Bridge tiny text */
-
 }
 
 img {
   position: relative;
+  max-inline-size: 100%;
+  block-size: auto;
   width: 100%;
   height: 147px;
   left: 0px;
   top: -3px;
   margin-bottom: 0;
+  aspect-ratio: 2/1;
+  object-fit: cover;
 }
 
 .learn-creator {
@@ -37,8 +36,8 @@ img {
   margin-bottom: 0;
 }
 
-.learn-heading{
-   margin-top: -25px;
+.learn-heading {
+  margin-top: -25px;
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
@@ -47,17 +46,17 @@ img {
   color: #000000;
 }
 
-.learn-heading2{
+.learn-heading2 {
   margin-top: -8px;
- font-family: "Open Sans";
- font-style: normal;
- font-weight: 400;
- font-size: 14px;
- line-height: 19px;
- color: #000000;
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  color: #000000;
 }
 
-.action-button1 input{
+.action-button1 input {
   float: right;
   display: flex;
   flex-direction: row;
@@ -80,8 +79,7 @@ img {
   border-radius: 4px;
 }
 
-
-.action-button2 input{
+.action-button2 input {
   float: right;
   display: flex;
   flex-direction: row;
@@ -103,6 +101,3 @@ img {
   color: #ffffff;
   border-radius: 4px;
 }
-
-
-
