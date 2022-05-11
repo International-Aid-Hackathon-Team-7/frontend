@@ -9,11 +9,10 @@ color: #2A3A5A;
 }
 
 img {
-  position: relative;
+position: absolute;
 width: 39px;
 height: 39px;
-left: 70px;
-top: 0px;
-
+right: 90px;
+top: 10px;
 }
 
