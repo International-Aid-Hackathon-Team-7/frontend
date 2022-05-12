@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
@@ -9,6 +9,7 @@ import Learn from './pages/Learn/Learn';
 // import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
+import * as postService from './services/postServices'
 import Forum from './pages/Forum/Forum'
 import CreatePost from './pages/CreatePost/CreatePost'
 // import CreateProfile from './pages/CreateProfile/CreateProfile'
@@ -17,6 +18,7 @@ import About from './pages/About/About'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [forumPostsData , setForumPostsData] = useState({});
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -29,11 +31,20 @@ const App = () => {
     setUser(authService.getUser())
   }
 
+  useEffect(() => {
+    postService.getAllPosts().then((posts) => {
+      // console.log({posts});
+      const forumPosts = posts.filter(post => post.category !== "Learning");
+      console.log(forumPosts);
+      setForumPostsData(forumPosts);
+    })
+  },[]);
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} />} />
+        <Route path="/" element={<Landing user={user} forumPostsData={forumPostsData}/>} />
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
@@ -51,8 +62,8 @@ const App = () => {
           element={user ? <Profiles /> : <Navigate to="/login" />}
         /> */}
         <Route
-          path="/forum"
-          element={<Forum />}
+          path="/forum/*"
+          element={<Forum forumPostsData={forumPostsData}/>}
         />
         <Route
           path="/about"

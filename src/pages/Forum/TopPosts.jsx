@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function TopPosts(props) {
 
     const numPosts = props.posts.length;
@@ -12,11 +14,13 @@ export default function TopPosts(props) {
             id={post._id}
             onClick={props.selectTopPost}
         >
-            <span>{post.owner.name}</span>
-            <h2 >
-                {post.title}
-            </h2>
-            <p>Comments: {post.comments.length}</p>
+            <Link to={`/forum/${post.category._id}/${post._id}`}>
+                <span>{post.owner.name}</span>
+                <h2 >
+                    {post.title}
+                </h2>
+                <p>Comments: {post.comments.length}</p>
+            </Link>
         </div>
     ))
     return(

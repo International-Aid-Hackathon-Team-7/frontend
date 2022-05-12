@@ -1,6 +1,8 @@
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 
+import { Link } from 'react-router-dom';
+
 export default function CategoryCarousel(props) {
 
     const responsive = {
@@ -25,9 +27,10 @@ export default function CategoryCarousel(props) {
         <div 
             key={category._id}
             id={category._id}
-            onClick={props.changeCategory}
         >
+          <Link to={`${category._id}`}>
             {category.category}
+          </Link>
         </div>
     ))
 
@@ -49,7 +52,10 @@ export default function CategoryCarousel(props) {
             dotListClass="custom-dot-list-style"
             itemClass="carousel-item-padding-40-px"
         >
-            {categoryDivs}
+          <div>
+            <Link to="/forum">Latest Posts</Link>
+          </div>
+          {categoryDivs}
         </Carousel>
         )
 }
