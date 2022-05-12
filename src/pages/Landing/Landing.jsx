@@ -1,24 +1,24 @@
-import { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import * as postService from '../../services/postServices'
+// import * as postService from '../../services/postServices'
 import ForumCarousel from '../../components/ForumCarousel/ForumCarousel';
 import LearnCarousel from '../../components/LearnCarousel/LearnCarousel';
 import GetInvolvedCarousel from '../../components/GetInvolvedCarousel/GetInvolvedCarousel';
 
 import styles from './Landing.module.css'
 
-export default function Landing ({ user }){
-  const [forumPostsData , setForumPostsData] = useState({});
+export default function Landing ({ user, forumPostsData }){
+  // const [forumPostsData , setForumPostsData] = useState({});
   // const [learningPostsData , setLearningPostsData] = useState({});
 
-  useEffect(() => {
-    postService.getAllPosts().then((posts) => {
-      // console.log({posts});
-      const forumPosts = posts.filter(post => post.category !== "Learning");
-      console.log(forumPosts);
-      setForumPostsData(forumPosts);
-    })
-  },[]);
+  // useEffect(() => {
+  //   postService.getAllPosts().then((posts) => {
+  //     // console.log({posts});
+  //     const forumPosts = posts.filter(post => post.category !== "Learning");
+  //     console.log(forumPosts);
+  //     setForumPostsData(forumPosts);
+  //   })
+  // },[]);
 
 
   
