@@ -1,23 +1,38 @@
-export default function PostFeed(props) {
+import { Link, useParams } from 'react-router-dom'
 
-    return(
-        <>
-            <h1>{props.category.category}</h1>
-            {props.category.posts.length > 0 ?
+export default function PostFeed({ categories, selectPost, setCategory}) {
+
+    let { categoryId } = useParams();
+
+    const loading = () => {
+        return(
+            <h1>Loading...</h1>
+            )
+        }
+        
+    const loaded = () => {
+        const index = categories.map(category => category._id).indexOf(categoryId);
+        const category = categories[index];
+            
+        return(
             <>
-                {props.category.posts.map((post) => (
+            <h1>{category.category}</h1>
+            {category.posts.length > 0 ?
+            <>
+                {category.posts.map((post) => (
                     <div 
                         key={post._id}
                         id={post._id}
-                        onClick={props.selectPost}
                         >
-                            <span>
-                            {post.owner.name}
-                            </span>
-                            <h2>
-                            {post.title}
+                            <Link to={`/forum/${category._id}/${post._id}`}>
+                                <span>
+                                {post.owner.name}
+                                </span>
+                                <h2>
+                                {post.title}
 
-                            </h2>
+                                </h2>
+                            </Link>
                     </div>
                 ))}
             </>
@@ -27,6 +42,8 @@ export default function PostFeed(props) {
             </>
             }
         </>
-               
-    )
+        )
+    }
+
+    return categories ? loaded() : loading();
 }
