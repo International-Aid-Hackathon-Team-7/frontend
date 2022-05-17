@@ -17,3 +17,16 @@ p {
 body {
   background: #E5E5E5;
 }
+
+.discuss-img {
+  width: 370px;
+  height: auto;
+  position: relative;
+  align-self: center;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  margin-left: 99.5px;
+  border-radius: 2%;
+}
+
