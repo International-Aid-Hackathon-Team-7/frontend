@@ -1,4 +1,3 @@
-import { textAlign } from '@mui/system';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import './ForumCarousel.css';
