@@ -1,3 +1,4 @@
+import { textAlign } from '@mui/system';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import './ForumCarousel.css';
@@ -17,7 +18,7 @@ const ForumCarousel = (props) => {
       <article className='carousel-card discuss-card'>
         {
           post.media &&
-          <img src={post.media} alt={post.title} style={{ width: "250px", height: "auto"}}/>
+          <img className="discuss-img" src={post.media} alt={post.title}/>
         }
         <div className='carousel-card-content'>
           <p className='discuss-creator'>{post.owner.name} &#8901; {dateText}</p>
