@@ -51,7 +51,7 @@ const GetInvolvedCarousel = () => {
       <article className="getInvolved">
         <a href="https://yourcier.org/">
           <img
-            src="https://bridge-app-bucket.s3.amazonaws.com/CIER-5.png"
+            src="https://bridge-app-bucket.s3.amazonaws.com/Holiday-Newsletter-2021-Earth-Rangers-Partnership-Header-1024x435.png"
             alt="Centre for indigenous environmental resource logo"
           />
         </a>
