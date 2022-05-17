@@ -25,6 +25,9 @@ export default function PostFeed({ categories, selectPost, setCategory}) {
                         id={post._id}
                         >
                             <Link to={`/forum/${category._id}/${post._id}`}>
+                                {/* {post.media &&
+                                    <img src={post.media} alt={post.title} style={{ width: "250px", height: "auto"}}/>
+                                } */}
                                 <span>
                                 {post.owner.name}
                                 </span>

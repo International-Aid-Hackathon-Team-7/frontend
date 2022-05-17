@@ -1,11 +1,19 @@
 h2 {
   font-family: 'Open Sans';
-font-style: normal;
-font-weight: 700;
+  font-style: normal;
+  font-weight: 700;
 
-font-size: 20px;
-line-height: 27px;
+  font-size: 20px;
+  line-height: 27px;
 
-color: #1B1A1A;
-margin: 10px;
+  color: #1B1A1A;
+  margin: 10px;
+}
+
+.container {
+  margin: 1.5rem;
+}
+
+.slider {
+  justify-content: space-evenly;
 }
