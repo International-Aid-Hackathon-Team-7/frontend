@@ -30,3 +30,15 @@ body {
   border-radius: 2%;
 }
 
+.discuss-content {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.read-more {
+  margin-left: 260px;
+  font-size: 17px;
+  text-decoration: underline;
+}

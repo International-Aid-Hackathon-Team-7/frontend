@@ -1,7 +1,7 @@
-import { textAlign } from '@mui/system';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import './ForumCarousel.css';
+
 
 const ForumCarousel = (props) => {
 
@@ -24,6 +24,7 @@ const ForumCarousel = (props) => {
           <p className='discuss-creator'>{post.owner.name} &#8901; {dateText}</p>
           <h3 className='discuss-heading'>{post.title}</h3>
           <p className='discuss-content'>{post.content}</p>
+          <a className='read-more' href={`/forum/${post.category._id}/${post._id}`}>Read more</a>
           <div className='discuss-feedback'>Likes: {likeCount} Comments: {commentCount}</div>
         </div>
       </article>
