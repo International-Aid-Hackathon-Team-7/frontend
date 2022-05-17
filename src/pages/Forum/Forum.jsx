@@ -19,7 +19,8 @@ export default function Forum ({forumPostsData}) {
     return(
       <main className={styles.container}>
         <h1>Forum</h1>
-          <CategoryCarousel categories={categories}/>
+          {/* <CategoryCarousel categories={categories}/> */}
+          <CategoryCarousel categories={categories} />
           <Routes>
             <Route 
               path="/"
