@@ -1,3 +1,8 @@
+h1 {
+  font-size: 25px;
+  margin-bottom: 0;
+}
+
 h2 {
   font-family: 'Open Sans';
   font-style: normal;
@@ -11,7 +16,34 @@ h2 {
 }
 
 .container {
-  margin: 1.5rem;
+  margin: 1.34rem;
+}
+
+.categorycarousel {
+  margin-bottom: 1.5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.roundedcircle {
+  font-size: 15px;
+  display: flex;
+  border: 1.5px solid;
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.category {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .slider {

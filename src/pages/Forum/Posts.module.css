@@ -1,0 +1,29 @@
+.postImg {
+    width: 100%;
+    height: auto;
+    /* height: 14rem; */
+    max-height: 20rem;
+    top: 0;
+    right: 0;
+    object-fit: cover;
+    position: relative;
+}
+
+.comments {
+    color: rgb(91, 92, 92);
+}
+
+.likes {
+    color: green;
+    margin-left: 5px;
+}
+
+.cardFooter {
+    position: relative;
+    height: 45px;
+}
+
+.icons {
+    display: flex;
+    position: absolute;
+}

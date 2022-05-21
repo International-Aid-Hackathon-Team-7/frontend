@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import styles from './Forum.module.css'
 import * as postService from '../../services/postServices'
 import CategoryCarousel from './CategoryCarousel'
@@ -15,39 +15,40 @@ export default function Forum ({forumPostsData}) {
     .then(categories => setCategories(categories));
   }, []);
 
-  const loaded = () => {
-    return(
-      <main className={styles.container}>
-        <h1>Forum</h1>
-          {/* <CategoryCarousel categories={categories}/> */}
-          <CategoryCarousel categories={categories} />
-          <Routes>
-            <Route 
-              path="/"
-              element={<TopPosts posts={forumPostsData} />}
-            />
-            <Route 
-              path="/:categoryId"
-              element={<PostFeed categories={categories} />}
-            />
-            <Route 
-              path="/:categoryId/:postId"
-              element={<ForumPost posts={forumPostsData}/>}
-            />
-          </Routes>
-      </main>
-    )
-  }
+  const loaded = (
+    <>
+      <CategoryCarousel categories={categories} />
+      <Routes>
+        <Route 
+          path="/"
+          element={<TopPosts posts={forumPostsData} />}
+        />
+        <Route 
+          path="/:categoryId"
+          element={<PostFeed categories={categories} />}
+        />
+        <Route 
+          path="/:categoryId/:postId"
+          element={<ForumPost posts={forumPostsData}/>}
+        />
+      </Routes>
+    </>  
+  )
 
-  const loading = () => {
-    return(
-      <main className={styles.container}>
-      <h1>Forum</h1>
-      <h2>Loading...</h2>
+  const loading = (
+    <h2 style={{textAlign: "center"}}>Loading...</h2>
+  )
+
+  return(
+    <main className={styles.container}>
+      <div className={styles.header}>
+          <h1 className={styles.h1}>Discuss</h1>
+          <Link className={`btn btn-outline-dark ${styles.roundedcircle}`} to='/createpost'>
+            <p>+</p>
+          </Link>
+       </div>
+       {categories.length > 0 ? loaded : loading}
     </main>
-    )
-  }
-
-  return categories.length > 0 ? loaded() : loading();
+  )
 }
 
