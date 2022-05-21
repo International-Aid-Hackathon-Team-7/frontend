@@ -1,8 +1,11 @@
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import Posts from './Posts'
 
 export default function PostFeed({ categories, selectPost, setCategory}) {
 
     let { categoryId } = useParams();
+
+    
 
     const loading = () => {
         return(
@@ -18,27 +21,7 @@ export default function PostFeed({ categories, selectPost, setCategory}) {
             <>
             <h1>{category.category}</h1>
             {category.posts.length > 0 ?
-            <>
-                {category.posts.map((post) => (
-                    <div 
-                        key={post._id}
-                        id={post._id}
-                        >
-                            <Link to={`/forum/${category._id}/${post._id}`}>
-                                {/* {post.media &&
-                                    <img src={post.media} alt={post.title} style={{ width: "250px", height: "auto"}}/>
-                                } */}
-                                <span>
-                                {post.owner.name}
-                                </span>
-                                <h2>
-                                {post.title}
-
-                                </h2>
-                            </Link>
-                    </div>
-                ))}
-            </>
+            <Posts posts={category.posts} />
             :
             <>
                 <p>No Posts in this Category</p>
