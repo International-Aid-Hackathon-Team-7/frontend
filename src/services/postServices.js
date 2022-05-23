@@ -73,7 +73,7 @@ export const getAllPosts = async () => {
 
 export const updateCategory = async (categoryId, category) => {
   try {
-    const res = await fetch(`${BASE_URL}${categoryId}`, {
+    const res = await fetch(`${BASE_URL}/${categoryId}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -91,7 +91,7 @@ export const updateCategory = async (categoryId, category) => {
 
 export const getPostById = async (categoryId, postId) => {
   try {
-    const res = await fetch(`${BASE_URL}${categoryId}/posts/${postId}`,
+    const res = await fetch(`${BASE_URL}/${categoryId}/posts/${postId}`,
     {
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`
@@ -105,7 +105,7 @@ export const getPostById = async (categoryId, postId) => {
 
 export const createComment= async (categoryId, postId, comment) => {
   try {
-    const res = await fetch(`${BASE_URL}${categoryId}/posts/${postId}/comments`, {
+    const res = await fetch(`${BASE_URL}/${categoryId}/posts/${postId}/comments`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -122,7 +122,7 @@ export const createComment= async (categoryId, postId, comment) => {
 
 export const deleteCategory = async (categoryId) => {
   try {
-    await fetch(`${BASE_URL}${categoryId}`, {
+    await fetch(`${BASE_URL}/${categoryId}`, {
       method: 'DELETE',
       headers: { 'Authorization': 'Bearer ' + tokenService.getToken() }
     })
@@ -133,7 +133,7 @@ export const deleteCategory = async (categoryId) => {
 
 export const updatePost = async (categoryId, postId, post) => {
   try {
-    const res = await fetch(`${BASE_URL}${categoryId}/posts/${postId}`, {
+    const res = await fetch(`${BASE_URL}/${categoryId}/posts/${postId}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -161,7 +161,7 @@ export const deletePost = async (categoryId, postId) => {
 
 export const updateComment = async (categoryId, postId, commentId, comment) => {
   try {
-    const res = await fetch(`${BASE_URL}${categoryId}/posts/${postId}/comments/${commentId}`, {
+    const res = await fetch(`${BASE_URL}/${categoryId}/posts/${postId}/comments/${commentId}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -178,7 +178,7 @@ export const updateComment = async (categoryId, postId, commentId, comment) => {
 
 export const deleteComment = async (categoryId, postId, commentId) => {
   try {
-    await fetch(`${BASE_URL}${categoryId}/posts/${postId}/comments/${commentId}`, {
+    await fetch(`${BASE_URL}/${categoryId}/posts/${postId}/comments/${commentId}`, {
       method: 'DELETE',
       headers: { 'Authorization': 'Bearer ' + tokenService.getToken() }
     })
