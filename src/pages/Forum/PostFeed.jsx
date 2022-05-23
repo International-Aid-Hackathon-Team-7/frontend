@@ -5,8 +5,6 @@ export default function PostFeed({ categories, selectPost, setCategory}) {
 
     let { categoryId } = useParams();
 
-    
-
     const loading = () => {
         return(
             <h1>Loading...</h1>

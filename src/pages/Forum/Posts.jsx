@@ -19,12 +19,12 @@ export default function Posts(props) {
                     </span>
                 </div>
                 <div className="card-body">
-                    <Link to={`/forum/${post.category._id}/${post._id}`}>
+                    <Link to={`/forum/${post.category}/${post._id}`}>
                         <div className="card-title">
                             {post.title}
                         </div>
                     </Link>
-                    {!post.media && <p className="card-text">{post.content}</p>}
+                    {!post.media && <p className="card-text" style={{marginLeft: "0", marginRight: "0"}}>{post.content}</p>}
                 </div>
                 {post.media && <img className={`card-img-btm ${styles.postImg}`} src={post.media} alt={post.title}/>}
                 <div className={`card-footer bg-transparent ${styles.cardFooter}`}>
