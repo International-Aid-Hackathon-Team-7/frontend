@@ -4,8 +4,8 @@ import "./ForumCarousel.css";
 
 const ForumCarousel = (props) => {
   const forumPosts = props.forumPostsData.slice(0, 12).map((post, i) => {
-    const likeCount = post.likeLevel ? post.likeLevel.count : 0;
-    const commentCount = post.comments ? post.comments.count : 0;
+    const likeCount = post.likeLevel ? post.likeLevel : 0;
+    const commentCount = post.comments ? post.comments.length : 0;
     const date = post.createdAt;
     const dateText =
       date.slice(5, 7) + "/" + date.slice(8, 10) + "/" + date.slice(0, 4);
@@ -37,7 +37,7 @@ const ForumCarousel = (props) => {
             Read more
           </a>
           <div className="discuss-feedback">
-            Likes: {likeCount} Comments: {post.comments.length}
+            Likes: {likeCount} Comments: {commentCount}
           </div>
         </div>
       </article>
