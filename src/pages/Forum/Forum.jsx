@@ -7,7 +7,7 @@ import PostFeed from './PostFeed'
 import TopPosts from './TopPosts'
 import ForumPost from './ForumPost'
 
-export default function Forum ({forumPostsData}) {
+export default function Forum ({forumPostsData, user}) {
   const [categories, setCategories] = useState([]);
  
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function Forum ({forumPostsData}) {
         />
         <Route 
           path="/:categoryId/:postId"
-          element={<ForumPost posts={forumPostsData}/>}
+          element={<ForumPost posts={forumPostsData} user={user}/>}
         />
       </Routes>
     </>  
@@ -43,9 +43,14 @@ export default function Forum ({forumPostsData}) {
     <main className={styles.container}>
       <div className={styles.header}>
           <h1 className={styles.h1}>Discuss</h1>
-          <Link className={`btn btn-outline-dark ${styles.roundedcircle}`} to='/createpost'>
-            <p>+</p>
-          </Link>
+          {user && 
+            <Link 
+              className={`btn btn-outline-dark ${styles.roundedcircle}`} 
+              to='/createpost'
+            >
+              <p>+</p>
+            </Link>
+          }
        </div>
        {categories.length > 0 ? loaded : loading}
     </main>

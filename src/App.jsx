@@ -63,7 +63,7 @@ const App = () => {
         /> */}
         <Route
           path="/forum/*"
-          element={<Forum forumPostsData={forumPostsData}/>}
+          element={<Forum forumPostsData={forumPostsData} user={user}/>}
         />
         <Route
           path="/about"
