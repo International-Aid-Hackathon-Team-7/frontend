@@ -34,8 +34,8 @@ const GetInvolvedCarousel = () => {
             src="https://bridge-app-bucket.s3.amazonaws.com/oceansnorth_donate+1.png"
             alt="Ocean North thumbnail"
           />
-          <p className="learn-creator">Oceans North</p>
-          <p className="learn-heading">
+          <p className="involved-creator">Oceans North</p>
+          <p className="involved-heading">
             Supporting marine conservations in partnership with Indigenous and
             coastal communities.
           </p>
@@ -55,10 +55,10 @@ const GetInvolvedCarousel = () => {
             alt="Centre for indigenous environmental resource logo"
           />
         </a>
-        <h2 className="learn-creator">
+        <h2 className="involved-creator">
           Centre for Indigenous Environmental Resources (CIER)
         </h2>
-        <p className="learn-heading2">
+        <p className="involved-heading2">
           CIER’s ultimate impact will be realized when First Nations in Canada
           are leaders of positive environmental change.
         </p>

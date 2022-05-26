@@ -39,7 +39,8 @@ const LearnCarousel = () => {
         <div className='carousel-card-content'>
           <p className='learn-creator'>Ally Dean &#8901; 5/3/2022</p>
           <h3 className='learn-heading'>5 Sustainability Tips and Tricks</h3>
-          <div className='learn-feedback'>1.4k 300</div>
+          <div className='learn-feedback'><span className={`material-icons-outlined discuss-likes`}> compost</span> 1.4k<p></p>
+          <span className={`material-icons-outlined discuss-comments`}> chat_bubble_outline</span> 300</div>
         </div>
       </article>
       <article className='carousel-card learn-card'>
@@ -47,7 +48,7 @@ const LearnCarousel = () => {
         <div className='carousel-card-content'>
           <p className='learn-creator'>Dean Wright &#8901; 3/15/2022</p>
           <h3 className='learn-heading'>Eco Friendly Commute</h3>
-          <div className='learn-feedback'>2.4k 100</div>
+          <div className='learn-feedback'><span className={`material-icons-outlined discuss-likes`}> compost</span>2.4k<p></p> <span className={`material-icons-outlined discuss-comments`}> chat_bubble_outline</span>100</div>
         </div>
       </article>
       <article className='carousel-card learn-card'>
@@ -55,7 +56,7 @@ const LearnCarousel = () => {
         <div className='carousel-card-content'>
           <p className='learn-creator'>Jerome Delaney &#8901; 4/23/2022</p>
           <h3 className='learn-heading'>Solar Basics</h3>
-          <div className='learn-feedback'>1.8k 350</div>
+          <div className='learn-feedback'><span className={`material-icons-outlined discuss-likes`}> compost</span>1.8k<p></p> <span className={`material-icons-outlined discuss-comments`}> chat_bubble_outline</span>350</div>
         </div>
       </article>
       <article className='carousel-card learn-card'>
@@ -63,7 +64,7 @@ const LearnCarousel = () => {
         <div className='carousel-card-content'>
           <p className='learn-creator'>Ally Dean &#8901; 5/3/2022</p>
           <h3 className='learn-heading'>5 Sustainability Tips and Tricks</h3>
-          <div className='learn-feedback'>1.4k 300</div>
+          <div className='learn-feedback'><span className={`material-icons-outlined discuss-likes`}> compost</span>1.4k<p></p><span className={`material-icons-outlined discuss-comments`}> chat_bubble_outline</span>300</div>
         </div>
       </article>
     </Carousel>
