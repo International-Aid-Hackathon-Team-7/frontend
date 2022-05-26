@@ -8,23 +8,10 @@ import GetInvolvedCarousel from '../../components/GetInvolvedCarousel/GetInvolve
 import styles from './Landing.module.css'
 
 export default function Landing ({ user, forumPostsData }){
-  // const [forumPostsData , setForumPostsData] = useState({});
-  // const [learningPostsData , setLearningPostsData] = useState({});
-
-  // useEffect(() => {
-  //   postService.getAllPosts().then((posts) => {
-  //     // console.log({posts});
-  //     const forumPosts = posts.filter(post => post.category !== "Learning");
-  //     console.log(forumPosts);
-  //     setForumPostsData(forumPosts);
-  //   })
-  // },[]);
-
 
   
   return (
     <main className={styles.container}>
-      {/* <h1>hello, {user ? user.name : 'friend'}</h1> */}
       <section className='learning'>
         <h2>
           <Link className="landing-page-link" to="/learn">Learn &#62;</Link>
