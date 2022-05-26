@@ -8,17 +8,17 @@
 }
 
 .carousel-card-content {
-  padding: 8px;
+  /* padding: 8px; */
 }
 
 .learn-creator {
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 10px;
   line-height: 19px;
   color: #000000;
-  margin: 5px 0px 5px 20px;
+  margin: 5px 0px 0px 10px;
 }
 
 .learn-heading {
@@ -27,16 +27,25 @@
   font-weight: 700;
   font-size: 15.16px;
   line-height: 21px;
-  margin: 5px 0px 15px 20px;
+  margin: 5px 0px 10px 10px;
   color: #000000;
 }
 
 .learn-feedback {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-content: center;
   font-family: 'PT Sans';
   font-style: normal;
   font-weight: 400;
   font-size: 13.2624px;
   line-height: 17px;
   color: #8D8686;
-  margin: 5px 0px 10px 20px;
+  margin: 5px 0px 10px 3px;
+}
+
+.learn-feedback .material-icons-outlined{
+  font-size: 17px;
+  margin-right: 2px;
 }

@@ -23,7 +23,7 @@
   object-fit: cover;
 }
 
-.learn-creator {
+.involved-creator {
   width: 306px;
   height: 50px;
   font-family: "Open Sans";
@@ -36,7 +36,7 @@
   margin-bottom: 0;
 }
 
-.learn-heading {
+.involved-heading {
   margin-top: -25px;
   font-family: "Open Sans";
   font-style: normal;
@@ -45,10 +45,10 @@
   line-height: 19px;
   color: #000000;
   white-space:normal !important;
-word-wrap:break-word;
+  word-wrap:break-word;
 }
 
-.learn-heading2 {
+.involved-heading2 {
   margin-top: -8px;
   font-family: "Open Sans";
   font-style: normal;
@@ -57,7 +57,7 @@ word-wrap:break-word;
   line-height: 19px;
   color: #000000;
   white-space:normal !important;
-word-wrap:break-word;
+  word-wrap:break-word;
 }
 
 .action-button1 input {

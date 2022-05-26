@@ -11,37 +11,38 @@ const ForumCarousel = (props) => {
       date.slice(5, 7) + "/" + date.slice(8, 10) + "/" + date.slice(0, 4);
 
     return (
-      <article key={post._id} className="carousel-card discuss-card">
-        {post.media && (
-          <img
-
-            className="discuss-img"
-            src={post.media}
-            alt={post.title}
-          />
-        )}
-        <div  className="carousel-card-content">
-          <p className="discuss-creator">
-            {post.owner.name} &#8901; {dateText}
-          </p>
-          <h3 className="discuss-heading">
-            {post.title}
-          </h3>
-          <p className="discuss-content">
-            {post.content}
-          </p>
-          <a
-            className="read-more"
+             <a
+            // className="read-more"
             href={`/forum/${post.category._id}/${post._id}`}
           >
-            Read more
-          </a>
+      <article key={post._id} className="carousel-card discuss-card">
+        <p className="discuss-creator">
+          {post.owner.name} &#8901; {dateText}
+        </p>
+        <h3 className="discuss-heading">{post.title}</h3>
+        {post.media && (
+          <img className="discuss-img" src={post.media} alt={post.title} />
+        )}
+        <div className="carousel-card-content">
+        {!post.media && (
+          <p className="discuss-content">{post.content}</p>
+          )
+          }
+     {/* Read more */}
           <div className="discuss-feedback">
-            <span className={`material-icons-outlined discuss-comments`}>chat_bubble_outline</span>{commentCount}
-            <span className={`material-icons-outlined discuss-likes`}>compost</span>{likeCount}
+            <span className={`material-icons-outlined discuss-likes`}>
+              compost
+            </span>
+            {likeCount}
+            <p></p>
+            <span className={`material-icons-outlined discuss-comments`}>
+              chat_bubble_outline
+            </span>
+            {commentCount}
           </div>
         </div>
       </article>
+          </a>
     );
   });
 
