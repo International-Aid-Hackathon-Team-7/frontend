@@ -37,7 +37,8 @@ const ForumCarousel = (props) => {
             Read more
           </a>
           <div className="discuss-feedback">
-            Likes: {likeCount} Comments: {commentCount}
+            <span className={`material-icons-outlined discuss-comments`}>chat_bubble_outline</span>{commentCount}
+            <span className={`material-icons-outlined discuss-likes`}>compost</span>{likeCount}
           </div>
         </div>
       </article>

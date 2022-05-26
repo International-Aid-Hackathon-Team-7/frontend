@@ -1,12 +1,12 @@
 h2 {
   font-family: 'Open Sans';
-font-style: normal;
-font-weight: 700;
-font-size: 20px;
-line-height: 27px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 27px;
 
-color: #1B1A1A;
-margin: 10px;
+  color: #1B1A1A;
+  margin: 10px;
 }
 
 p {
@@ -85,4 +85,13 @@ body {
   line-height: 18px;
   color: #000000;
   padding: 5px;
+}
+
+.discuss-comments {
+  color: rgb(91, 92, 92);
+}
+
+.discuss-likes {
+  color: green;
+  margin-left: 5px;
 }
