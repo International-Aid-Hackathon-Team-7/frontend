@@ -11,11 +11,11 @@
 
 .comments {
     color: rgb(91, 92, 92);
+    margin-left: 5px;
 }
 
 .likes {
     color: green;
-    margin-left: 5px;
 }
 
 .cardFooter {
