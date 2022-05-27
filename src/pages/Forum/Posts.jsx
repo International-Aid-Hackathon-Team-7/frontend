@@ -29,8 +29,8 @@ export default function Posts(props) {
                 {post.media && <img className={`card-img-btm ${styles.postImg}`} src={post.media} alt={post.title}/>}
                 <div className={`card-footer bg-transparent ${styles.cardFooter}`}>
                     <div className={styles.icons}>
-                        <span className={`material-icons-outlined ${styles.comments}`}>chat_bubble_outline</span>{post.comments.length}
                         <span className={`material-icons-outlined ${styles.likes}`}>compost</span> 100
+                        <span className={`material-icons-outlined ${styles.comments}`}>chat_bubble_outline</span>{post.comments.length}
                     </div>
                 </div>
             </div>

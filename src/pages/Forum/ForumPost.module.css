@@ -15,7 +15,6 @@
 }
 
 .commentsContainer {
-
     margin-bottom: 45px;
 }
 
@@ -26,6 +25,16 @@
 .linkCol {
     display: flex;
     justify-content: center;
+}
+
+.commentEdit {
+    display: flex;
+    justify-content: right;
+}
+
+.commentLike {
+    display: flex;
+    justify-content: left;
 }
 
 .btn {

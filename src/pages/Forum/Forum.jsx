@@ -7,7 +7,7 @@ import PostFeed from './PostFeed'
 import TopPosts from './TopPosts'
 import ForumPost from './ForumPost'
 
-export default function Forum ({forumPostsData, user}) {
+export default function Forum ({forumPostsData, user, profile}) {
   const [categories, setCategories] = useState([]);
  
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function Forum ({forumPostsData, user}) {
         />
         <Route 
           path="/:categoryId/:postId"
-          element={<ForumPost posts={forumPostsData} user={user}/>}
+          element={<ForumPost posts={forumPostsData} user={user} profile={profile}/>}
         />
       </Routes>
     </>  
