@@ -10,6 +10,7 @@ import Learn from './pages/Learn/Learn';
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import * as postService from './services/postServices'
+import * as profileService from './services/profileService'
 import Forum from './pages/Forum/Forum'
 import CreatePost from './pages/CreatePost/CreatePost'
 // import CreateProfile from './pages/CreateProfile/CreateProfile'
@@ -18,6 +19,7 @@ import About from './pages/About/About'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [profile, setProfile] = useState(null)
   const [forumPostsData , setForumPostsData] = useState({});
   const navigate = useNavigate()
 
@@ -26,7 +28,7 @@ const App = () => {
     setUser(null)
     navigate('/')
   }
-
+  console.log(user)
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
   }
@@ -39,6 +41,18 @@ const App = () => {
       setForumPostsData(forumPosts);
     })
   },[]);
+
+  useEffect(() => {
+    if(user) {
+      profileService.getProfileById(user.profile).then((profile) => {
+        setProfile(profile);
+      })
+    }
+  //  profileService.getAllProfiles().then((profiles) => {
+  //    const p = profiles.find(profile => profile.email === user.email && profile.name === user.name)
+  //    setProfile(p)
+  //  })
+  }, [user])
 
   return (
     <>
@@ -63,7 +77,7 @@ const App = () => {
         /> */}
         <Route
           path="/forum/*"
-          element={<Forum forumPostsData={forumPostsData} user={user}/>}
+          element={<Forum forumPostsData={forumPostsData} user={user} profile={profile}/>}
         />
         <Route
           path="/about"
