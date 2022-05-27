@@ -11,11 +11,11 @@ const ForumCarousel = (props) => {
       date.slice(5, 7) + "/" + date.slice(8, 10) + "/" + date.slice(0, 4);
 
     return (
-             <a
+            <a key={post._id}
             // className="read-more"
             href={`/forum/${post.category._id}/${post._id}`}
           >
-      <article key={post._id} className="carousel-card discuss-card">
+      <article  className="carousel-card discuss-card">
         <p className="discuss-creator">
           {post.owner.name} &#8901; {dateText}
         </p>
