@@ -2,18 +2,19 @@ import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import styles from './ForumPost.module.css'
 import CommentForm from './CommentForm'
-// import * as postService from '../../services/postServices'
 import Comment from './Comment'
+// import * as postService from '../../services/postServices'
 
 export default function ForumPost(props) {
 
     const [posts, setPosts] = useState([]);
-
+    
     useEffect(() => {
-        setPosts(props.posts)
-    }, [props.posts])
+            setPosts(props.posts)
+        }, [props.posts])
+        
+    let {postId } = useParams();
 
-    let { postId } = useParams();
 
     const loading = () => {
         return(
@@ -28,31 +29,18 @@ export default function ForumPost(props) {
 
         const dateText = date.slice(5,7) + '/' + date.slice(8,10) + '/' + date.slice(0,4);
         const comments = post.comments.map((comment) => {
-            // const commentDate = comment.createdAt.slice(5,7) + '/' + comment.createdAt.slice(8,10) + '/' + comment.createdAt.slice(0,4);
             return(
-                <Comment key={comment._id} user={props.user} profile={props.profile} post={post} comment={comment}/>
-                // <div className="card" key={comment._id}>
-                //     <div className="card-header">
-                //         <span>{comment.commentator.name} | {commentDate}</span>
-                //     </div>
-                //     <div className="card-body">
-                //         <p className="card-text">{comment.comment_content}</p>
-                //     </div>
-                //     <div className={`card-footer bg-transparent ${styles.buttons}`}>
-                //         <div className="row">
-                //             <div className={`col ${styles.commentLike}`}>
-                //                 <button className={`btn btn-light`} onClick={handleLike}>
-                //                     <span className={`material-icons-outlined ${styles.btn}`}>compost</span>{comment.likeLevel}
-                //                 </button>
-                //             </div>
-                //             <div className={`col ${styles.commentEdit}`}>
-                //                 {props.user.profile === comment.commentator._id && 
-                //                     <span className={`material-icons-outlined ${styles.btn}`}>edit</span>
-                //                 }
-                //             </div>
-                //         </div>
-                //     </div>
-                // </div>
+                <Comment 
+                    key={comment._id} 
+                    user={props.user} 
+                    profile={props.profile} 
+                    post={post} 
+                    comment={comment} 
+                    setPosts={setPosts} 
+                    updatePosts={props.updatePosts} 
+                    updateCategories={props.updateCategories}
+                    updateProfile={props.updateProfile}
+                />
             )
         })
         return(
@@ -91,7 +79,13 @@ export default function ForumPost(props) {
                     {comments}
                 </div>
                 {}
-                <CommentForm user={props.user} post={post} setPosts={setPosts}/>
+                <CommentForm 
+                    user={props.user} 
+                    post={post} 
+                    setPosts={setPosts} 
+                    updatePosts={props.updatePosts} 
+                    updateCategories={props.updateCategories}
+                />
             </div>
         )
     }
