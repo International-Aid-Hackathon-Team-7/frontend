@@ -25,4 +25,22 @@ async function getProfileById(profileId) {
   }
 }
 
-export {getAllProfiles, getProfileById}
+async function editProfile(profileId, updatedProfile) {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}`, 
+      {
+        headers: {
+          'content-type': 'application/json',
+          'Authorization': `Bearer ${tokenService.getToken()}`
+        },
+        body: JSON.stringify(updatedProfile)
+      }
+    )
+    const data = await res.json()
+    return data
+  } catch (error) {
+    throw error
+  }
+}
+
+export {getAllProfiles, getProfileById, editProfile}

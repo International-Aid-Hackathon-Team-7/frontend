@@ -1,8 +1,8 @@
 import styles from './ForumPost.module.css'
 import { useState } from 'react'
-import { createComment, getAllPosts } from "../../services/postServices"
+import { createComment } from "../../services/postServices"
 
-export default function CommentForm({user, post, setPosts}) {
+export default function CommentForm({user, post, setPosts, updatePosts, updateCategories}) {
 
     const [comment, setComment] = useState(
         {
@@ -17,8 +17,8 @@ export default function CommentForm({user, post, setPosts}) {
     const handleSubmit = async (evt) => {
         evt.preventDefault();
         await createComment(post.category._id, post._id, comment)
-        const posts = await getAllPosts();
-        setPosts(posts);
+        updatePosts()
+        updateCategories()
         setComment({comment_content: ''})
     }
 

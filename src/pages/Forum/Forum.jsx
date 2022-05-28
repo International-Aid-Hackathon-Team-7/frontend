@@ -7,13 +7,18 @@ import PostFeed from './PostFeed'
 import TopPosts from './TopPosts'
 import ForumPost from './ForumPost'
 
-export default function Forum ({forumPostsData, user, profile}) {
+export default function Forum ({forumPostsData, user, profile, updatePosts, updateProfile}) {
   const [categories, setCategories] = useState([]);
  
   useEffect(() => {
     postService.getAllCategories()
     .then(categories => setCategories(categories));
   }, []);
+
+  const updateCategories = () => {
+    postService.getAllCategories()
+    .then(categories => setCategories(categories));
+  }
 
   const loaded = (
     <>
@@ -29,7 +34,16 @@ export default function Forum ({forumPostsData, user, profile}) {
         />
         <Route 
           path="/:categoryId/:postId"
-          element={<ForumPost posts={forumPostsData} user={user} profile={profile}/>}
+          element={
+            <ForumPost 
+              posts={forumPostsData} 
+              user={user} 
+              profile={profile} 
+              updatePosts={updatePosts} 
+              updateCategories={updateCategories}
+              updateProfile={updateProfile}
+            />
+          }
         />
       </Routes>
     </>  

@@ -54,6 +54,20 @@ const App = () => {
   //  })
   }, [user])
 
+  const updateProfile = () => {
+    profileService.getProfileById(user.profile).then((profile) => {
+      setProfile(profile);
+    })
+  }
+
+  const updatePosts = () => {
+    postService.getAllPosts().then((posts) => {
+      const forumPosts = posts.filter(post => post.category !== "Learning");
+      console.log(forumPosts);
+      setForumPostsData(forumPosts);
+    })
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -77,7 +91,14 @@ const App = () => {
         /> */}
         <Route
           path="/forum/*"
-          element={<Forum forumPostsData={forumPostsData} user={user} profile={profile}/>}
+          element={
+            <Forum 
+              forumPostsData={forumPostsData} 
+              user={user} 
+              profile={profile} 
+              updatePosts={updatePosts}
+              updateProfile={updateProfile}
+            />}
         />
         <Route
           path="/about"
