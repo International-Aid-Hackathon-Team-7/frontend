@@ -29,6 +29,7 @@ async function editProfile(profileId, updatedProfile) {
   try {
     const res = await fetch(`${BASE_URL}/${profileId}`, 
       {
+        method: 'PUT',
         headers: {
           'content-type': 'application/json',
           'Authorization': `Bearer ${tokenService.getToken()}`

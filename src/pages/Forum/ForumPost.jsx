@@ -69,7 +69,7 @@ export default function ForumPost(props) {
                     </div>
                     <div className={`card-footer bg-transparent ${styles.cardFooter}`}>
                         <div className={styles.icons}>
-                            <span className={`material-icons-outlined ${styles.likes}`}>compost</span> 100
+                            <span className={`material-icons-outlined ${styles.likes}`}>compost</span> {post.likeLevel ? post.likeLevel : 0}
                         </div>
                     </div>
                 </div>

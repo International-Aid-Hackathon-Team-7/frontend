@@ -1,29 +1,35 @@
 import { useState, useEffect, useRef } from 'react'
 import styles from './ForumPost.module.css'
 import * as postService from '../../services/postServices'
-// import * as profileService from '../../services/profileService'
+import * as profileService from '../../services/profileService'
 import CommentEdit from "./CommentEdit"
 
 export default function Comment(props) {
 
     const [comment, setComment] = useState(props.comment)
     const updateCommentRef = useRef();
-
-    const handleLike = (evt) => {
+    const handleLike = async (evt) => {
         if(comment.likeLevel !== undefined) {
             const likes = comment.likeLevel;
-            console.log(likes)
             const updatedLikes = likes + 1;
             setComment({
                 ...comment,
                 likeLevel: updatedLikes,
+                favorited_by: [...comment.favorited_by, props.profile._id],
             })
         } else {
             setComment({
                 ...comment,
                 likeLevel: 1,
+                favorited_by: [...comment.favorited_by, props.profile._id],
             })
         }
+        const favComments = props.profile.favorited_comments ? [...props.profile.favorited_comments, comment._id] : [comment._id]
+        const updatedProfile = {
+            ...props.profile,
+            favorited_comments: favComments
+        }
+        await profileService.editProfile(props.profile._id, updatedProfile)
     }
 
     const handleEdit = (newCommentText) => {
@@ -37,12 +43,14 @@ export default function Comment(props) {
         await postService.deleteComment(props.post.category._id, props.post._id, comment._id)
         props.updatePosts();
         props.updateCategories();
+        props.updateProfile();
     }
 
     const updateCommentCaller = async () => {
-      await postService.updateComment(props.post.category._id, props.post._id, comment._id, comment)
-      props.updatePosts();
-      props.updateCategories();
+        await postService.updateComment(props.post.category._id, props.post._id, comment._id, comment)
+        props.updatePosts();
+        props.updateCategories();
+        props.updateProfile();
     }
 
     useEffect(() => {
@@ -56,6 +64,13 @@ export default function Comment(props) {
     }, [comment, props.user])
 
     const commentDate = comment.createdAt.slice(5,7) + '/' + comment.createdAt.slice(8,10) + '/' + comment.createdAt.slice(0,4);
+    const likeBtnColor = props.profile && props.profile.favorited_comments.length > 0 && props.profile.favorited_comments.includes(comment._id) ? "green" : "black"
+    let likeBtnDisabled = true
+    if(props.profile) {
+        if(props.profile.favorited_comments.length > 0 && !props.profile.favorited_comments.includes(comment._id)) {
+            likeBtnDisabled = false
+        }
+    }
 
     return(
         <div className="card">
@@ -68,8 +83,12 @@ export default function Comment(props) {
         <div className={`card-footer bg-transparent ${styles.buttons}`}>
             <div className="row">
                 <div className={`col ${styles.commentLike}`}>
-                    <button disabled={props.user ? false : true} className={`btn btn-light`} onClick={handleLike}>
-                        <span className={`material-icons-outlined ${styles.btn}`}>compost</span>{comment.likeLevel}
+                    <button 
+                        disabled={likeBtnDisabled} 
+                        className={`btn btn-light`} 
+                        onClick={handleLike}
+                    >
+                        <span style={{color: likeBtnColor}} className={`material-icons-outlined ${styles.btn}`}>compost</span>{comment.likeLevel}
                     </button>
                 </div>
                 <div className={`col ${styles.commentEdit}`}>

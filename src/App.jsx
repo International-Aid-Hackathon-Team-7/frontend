@@ -35,15 +35,14 @@ const App = () => {
 
   useEffect(() => {
     postService.getAllPosts().then((posts) => {
-      // console.log({posts});
       const forumPosts = posts.filter(post => post.category !== "Learning");
-      console.log(forumPosts);
       setForumPostsData(forumPosts);
     })
   },[]);
 
   useEffect(() => {
     if(user) {
+      console.log("setting profile")
       profileService.getProfileById(user.profile).then((profile) => {
         setProfile(profile);
       })
@@ -63,7 +62,6 @@ const App = () => {
   const updatePosts = () => {
     postService.getAllPosts().then((posts) => {
       const forumPosts = posts.filter(post => post.category !== "Learning");
-      console.log(forumPosts);
       setForumPostsData(forumPosts);
     })
   }
