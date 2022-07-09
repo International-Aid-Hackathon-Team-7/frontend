@@ -150,7 +150,7 @@ export const updatePost = async (categoryId, postId, post) => {
 
 export const deletePost = async (categoryId, postId) => {
   try {
-    await fetch(`${BASE_URL}${categoryId}/posts/${postId}`, {
+    await fetch(`${BASE_URL}/${categoryId}/posts/${postId}`, {
       method: 'DELETE',
       headers: { 'Authorization': 'Bearer ' + tokenService.getToken() }
     })
